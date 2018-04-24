@@ -3,6 +3,8 @@
 \usepackage{amsmath}
 \usepackage{proof, environ, array}
 
+\newcommand{\rulename}[1]{#1}
+
 \title{Logic and Modelling Cheatsheet}
 \author{Jacob Burley}
 \date{Block 5 2018}
@@ -14,100 +16,100 @@
 \section{Propositional Logic}
 
 \subsection{Introduction of $\wedge$}
-    \begin{align*}
-      \infer[\rulename{\wedge_i}]
+    \begin{equation*}
+      \infer[\show\rulename{\wedge_i}]
       {\alpha \wedge \beta}
       {\alpha && \beta}
-    \end{align*}
+    \end{equation*}
     (If you have derived $\alpha$ and $\beta$, then you can conclude $\alpha \wedge \beta$.)
 \subsection{Elimination of $\wedge$}
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{\wedge_{e_1}}]
       {\alpha}
       {\alpha \wedge \beta}
-      &&
+      \&\&
       \infer[\rulename{\wedge_{e_2}}]
       {\beta}
       {\alpha \wedge \beta}
-    \end{align*}
+    \end{equation*}
 
 \subsection{Introduction of $\vee$}
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{\vee_{i_1}}]
       {\alpha \vee \beta}
       {\alpha}
-      &&
+      \&\&
       \infer[\rulename{\vee_{i_2}}]
       {\alpha \vee \beta}
       {\beta}
-    \end{align*}
+    \end{equation*}
     
 \subsection{Elimination and introduction of $\neg\neg$}
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{\neg\neg_e}]
       {\alpha}
       {\neg\neg\alpha}
-      &&
+      \&\&
       \infer[\rulename{\neg\neg_i}]
       {\neg\neg\alpha}
       {\alpha}
-    \end{align*}
+    \end{equation*}
     
 \subsection{Elimination with $\to$}
     This rule is called ``Modus Ponens'' (MP):
-    \begin{align*}
-      \infer[\rulename{\to_e} \;\; (or \rulename{MP})]
+    \begin{equation*}
+      \infer[\rulename{\to_e} (or \rulename{MP})]
       {\beta}
-      {\alpha && \alpha \to \beta}
-    \end{align*}
-    (If we have derived $\alpha$ and we know that $\alpha \to \beta$, then you can conclude $\beta$.)
+      {\alpha \&\& \alpha \to \beta}
+    \end{equation*}
+    (If we have derived $\alpha$ and we know that $\alpha\to\beta$, then you can conclude $\beta$.)
     \\\\This rule is called ``Modus Tollens'' (MT):
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{MT}]
       {\neg\alpha}
-      {\alpha \to \beta && \neg\beta}
-    \end{align*}
+      {\alpha \to \beta \&\& \neg\beta}
+    \end{equation*}
     (If we have derived $\alpha \to \beta$ and we know that $\beta$ is false ($\neg\beta$), then you can conclude $\alpha$ is false ($\neg\alpha$).)
     
 \subsection{Introduction with $\to$}
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{\to_i}]
       {\alpha \to \beta}
       {
         \framebox{\parbox{.8cm}{\centerline{$\alpha$}\centerline{$\vdots$}\centerline{$\beta$}}}
       }
-    \end{align*}
+    \end{equation*}
     (Basically, if we make an assumption $\alpha$, and we can use the above rules to conclude $\beta$, then we can say that $\alpha\to\beta$.)
     
 \subsection{Copy rule}
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{copy}]
       {\alpha}
       {\alpha}
-    \end{align*}
+    \end{equation*}
     (Basically we can copy an $\alpha$ to where we want it to be if we would like to.)
 
 \subsection{Elimination and introduction with $\neg$}
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{\neg_e}]
       {\bot}
-      {\alpha && \neg \alpha}
-    \end{align*}
+      {\alpha \&\& \neg \alpha}
+    \end{equation*}
     (Given a premise $\alpha$ and an instance of $\neg\alpha$, we can say that this is the same as $\bot$)
     
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{\neg_i}]
       {\neg \alpha}
       {
         \framebox{\parbox{.8cm}{\centerline{$\alpha$}\centerline{$\vdots$}\centerline{$\bot$}}}
       }
-    \end{align*}
+    \end{equation*}
     (If from a instance $\alpha$ we can derive $\bot$, we can say that this is the same as $\neg\alpha$)
     
 \subsection{Bottom (false) elimination}
-    \begin{align*}
+    \begin{equation*}
       \infer[\rulename{\bot_e}]
       {\alpha}
       {\bot}
-    \end{align*}
+    \end{equation*}
 \end{document}
