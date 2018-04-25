@@ -6,6 +6,10 @@ before_install:
 script:
 - mkdir _build
 - pdflatex -interaction=nonstopmode  -output-directory _build tex/main.tex
+branches:
+  only:
+    master
+
 before_deploy:
   - git config --local user.name "Travis CI"
   - git config --local user.email "travis@travis-ci.org"
