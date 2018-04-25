@@ -4,6 +4,9 @@
 \usepackage{proof, environ, array}
 
 \newcommand{\rulename}[1]{#1}
+\newcommand{\hint}[1]{#1}
+\newcommand{\myex}[2]{\exists #1 #2}
+\newcommand{\myall}[2]{\forall #1 #2}
 
 \title{Logic and Modelling Cheatsheet}
 \author{Jacob Burley}
@@ -17,7 +20,7 @@
 
 \subsection*{Introduction of $\wedge$}
     \begin{align*}
-      \infer[\rulename{\wedge_i}]
+      \infer[\show\rulename{\wedge_i}]
       {\alpha \wedge \beta}
       {\alpha && \beta}
     \end{align*}
@@ -140,4 +143,44 @@
       } 
     \end{align*}
     (This rule does not have premises)
+    
+\section*{Predicate Logic}
+\subsection*{Introduction of Existential Quantification}
+    \begin{align*}
+      \infer[\rulename{\exists_i}]
+      {\myex{x}{\phi}}
+      {\phi\;[t/x]}
+    \end{align*}
+    (The condition for applying this rule is that the variable $t$ is free for $x$in $\phi$) %%aka not bound by another quantifier? I think this means?
+
+\subsection*{Elimination of Universal Quantification}
+    \begin{align*}
+      \infer[\rulename{\forall_e}]
+      {\phi\;[t/x]}
+      {\myall{x}{\phi}}
+    \end{align*}
+    (The condition for applying this rule is that variable $t$ is free for $x$ in $\phi$)
+    %aka not bound by another quantifier? 
+\subsection*{Introduction of Universal Quantification}
+    \begin{equation*}
+      \infer[\rulename{\forall_i}]
+      {\forall x \phi}
+      {
+        \framebox{\parbox{1.8cm}{\hint{$x_0$}
+        \centerline{\vdots}
+        \centerline{$\phi[x_0/x]$}}}
+      }
+    \end{equation*}
+    (The condition for the application of this rule is that $x_0$ is arbitrary: that is, that $x_0$ only occurs within the box, we cannot remove it from the box and use it in $\phi$)
+    
+\subsection*{Elimination of Existential Quantification}
+    \begin{align*}
+      \infer[\rulename{\exists_e}]
+      {\psi}
+      {
+        \myex{x}{\phi} &&
+        \framebox{\parbox{1.8cm}{\hint{$x_0$}\\\centerline{$\phi[x_0/x]$}\\\centerline{$\vdots$}\\\centerline{$\psi$}}}
+      }
+    \end{align*}
+    (Condition for application of this rule is that $x_0$ is nowhere outside this box, i.e. it is not used in $\psi$)
 \end{document}
