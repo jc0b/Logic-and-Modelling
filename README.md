@@ -13,3 +13,5 @@ Thanks!
 The source for all of the formulas in this document were lifted from the slides for this course provided by Jörg Endrullis, which can be found on his website [here](http://joerg.endrullis.de/logic-and-modelling/). I have attempted to recreate the rules he defined for his slides, as they were not available in his source.
 
 In turn, any explanations or theory that has been or will be added will be simplified from explanation offered in the book [Logic in Computer Science](https://www.cs.bham.ac.uk/research/projects/lics/), written by Professors Mark Ryan and Michael Huth.
+
+This project also uses [k3rn31p4nic's](https://github.com/k3rn31p4nic) awesome [serverless Discord webhook for Travis CI](https://github.com/k3rn31p4nic/travis-ci-discord-webhook), which means I can get notifications about builds inline with my existing GitHub notifications.
