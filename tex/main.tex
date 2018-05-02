@@ -183,4 +183,17 @@
       }
     \end{align*}
     (Condition for application of this rule is that $x_0$ is nowhere outside this box, i.e. it is not used in $\psi$)
+\section*{Predicate Logic with Equality}
+  \subsection*{Equality Introduction}
+    \begin{align*}
+      \infer[\rulename{=_i}]
+      {\quad t=t \quad}
+      {}
+    \end{align*}
+  \subsection*{Equality Elimination}
+    \begin{align*}
+      \infer[\rulename{=_e}]
+      {\phi[t_2/x]}
+      {t_1 = t_2 && \phi[t_1/x]}
+    \end{align*}
 \end{document}
