@@ -1,7 +1,9 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{proof, environ, array}
+\usepackage{fitch}
 
 \newcommand{\rulename}[1]{#1}
 \newcommand{\hint}[1]{#1}
@@ -9,14 +11,86 @@
 \newcommand{\myall}[2]{\forall #1 #2}
 
 \title{Logic and Modelling Cheatsheet}
-\author{Jacob Burley}
+\author{Jacob Burley, Harry King}
 \date{Block 5 2018}
 
 \begin{document}
 
 \maketitle
 
-\section*{Propositional Logic}
+\section*{Propositional Logic Basics}
+\begin{itemize}
+    \item Contingency: formula is sometimes True, sometimes False.
+    \item Tautology: formula is always True.
+    \item Contradiction: formula is always False.
+\end{itemize}
+
+\subsection*{Semantic Entailment ($\vDash$)}
+
+\[
+\alpha_{1},\ldots,\alpha_{n}\vDash\beta.
+\]
+Whenever $\alpha_{1},\ldots\alpha_{n}$ are all true, $\beta$ is true.
+
+\subsection*{Semantic Equivalence}
+
+Formulae are logically equivalent if they have the same truth table.
+$\phi\equiv\psi$.
+
+\[
+\alpha\equiv\beta\Longleftrightarrow\alpha\vDash\beta\,\,\,and\,\,\,\beta\vDash\alpha
+\]
+
+\section*{Natural Deduction}
+$$\alpha_{1},\ldots,\alpha_{n}\vdash\beta$$
+
+$\perp$ (turnstile) says that there is a natural deduction derivation
+for $\beta$ given the premises $\alpha_{1},\ldots,\alpha_{n}$.
+\\This means that, using the rules for natural deduction given below, we can derive $\beta$ from the given premises $\alpha_1,\ldots, \alpha_n$.
+
+\section*{Soundness \& Completeness in Propositional Logic}
+
+\subsection*{Semantic Entailment}
+
+$\phi_{1},\ldots,\phi_{n}\vDash\psi.$
+
+\subsection{Syntatic Derivability}
+
+$\phi_{1},\ldots,\phi_{n}\vdash\psi$.
+
+\subsection{Soundness/Correctness}
+
+Everything derivable is true.
+
+\[
+\phi_{1},\ldots,\phi_{n}\vdash\psi\,\,\,\Longrightarrow\,\,\,\phi_{1},\ldots,\phi_{n}\vDash\psi
+\]
+\begin{itemize}
+    \item If $\psi$ is derivable from premises $\phi_{1,}\ldots,\phi_{n}$, then every valuation that makes $\psi$ true.
+    \item Truth in a model (valuation) is preserved under derivation.
+    \item Correct/sound as it is not possible to derive false conclusions from true premises.
+\end{itemize}
+
+\subsection{Completeness}
+
+Everything true is derivable.
+
+\[
+\phi_{1},\ldots,\phi_{n}\vDash\psi\,\,\,\Longrightarrow\,\,\,\phi_{1},\ldots,\phi_{n}\vdash\psi
+\]
+\begin{itemize}
+    \item If $\psi$ follows semantically from $\phi_{1,}\ldots,\phi_{n}$, then $\psi$ can be derived syntatically from presmises $\phi_{1,}\ldots,\phi_{n}$.
+    \item Thus syntactic derivation rules are strong enough to derive every semantic conclusion.
+    \item The system is complete: no more rules are required.
+\end{itemize}
+
+\subsection{Soundness/Completeness Theorem}
+
+\[
+\phi_{1},\ldots,\phi_{n}\vdash\psi\,\,\,\Longleftrightarrow\,\,\,\phi_{1},\ldots,\phi_{n}\vDash\psi
+\]
+
+\section*{Propositional Logic Rules}
 
 \subsection*{Introduction of $\wedge$}
     \begin{align*}
@@ -144,7 +218,7 @@
     \end{align*}
     (This rule does not have premises)
     
-\section*{Predicate Logic}
+\section*{Predicate Logic Rules}
 \subsection*{A quick note on "\textit{Free for $x$}"}
 For some of the below rules, we replace all \textbf{free} instances of $x$ in $\phi$ with our new term $t$, but \textbf{only} if we are sure that variable $t$ is free for $x$ in $\phi$. 
     \\\\What is meant by "\textit{free for $x$}"? If we are introducing a term $t$ such as $F(y,y)$, then we would replace all $x$s in the parse tree for a formula $\phi$ with $F(y,y)$. However, we must not do this if the unbound $x$ we are replacing \textit{is} bound by, in this case, a quantification for $y$. If we did this, our new term $F(y,y)$ would be bound by this quantification, which we should avoid.
