@@ -145,6 +145,9 @@
     (This rule does not have premises)
     
 \section*{Predicate Logic}
+\subsection*{A quick note on "\textit{Free for $x$}"}
+For some of the below rules, we replace all \textbf{free} instances of $x$ in $\phi$ with our new term $t$, but \textbf{only} if we are sure that variable $t$ is free for $x$ in $\phi$. 
+    \\\\What is meant by "\textit{free for $x$}"? If we are introducing a term $t$ such as $F(y,y)$, then we would replace all $x$s in the parse tree for a formula $\phi$ with $F(y,y)$. However, we must not do this if the unbound $x$ we are replacing \textit{is} bound by, in this case, a quantification for $y$. If we did this, our new term $F(y,y)$ would be bound by this quantification, which we should avoid.
 \subsection*{Introduction of Existential Quantification}
     \begin{align*}
       \infer[\rulename{\exists_i}]
@@ -160,7 +163,6 @@
       {\myall{x}{\phi}}
     \end{align*}
     (The condition for applying this rule is that variable $t$ is free for $x$ in $\phi$)
-    %aka not bound by another quantifier? 
 \subsection*{Introduction of Universal Quantification}
     \begin{equation*}
       \infer[\rulename{\forall_i}]
@@ -190,10 +192,13 @@
       {\quad t=t \quad}
       {}
     \end{align*}
+    There are no prerequisites here, we can simply add an equality stating that a term $t$ is equal to term $t$.
   \subsection*{Equality Elimination}
     \begin{align*}
       \infer[\rulename{=_e}]
       {\phi[t_2/x]}
       {t_1 = t_2 && \phi[t_1/x]}
     \end{align*}
+    Given that $t_1$ is free for $x$ in $\phi$, and $t_1 = t_2$, we can replace all instances of $t_1$ with $t_2$.
+    
 \end{document}
